@@ -1,29 +1,42 @@
 #include <stdio.h>
 
-void bubble_sort(int arr[], int size);
-int main(int argc, char *argv[])
+void bubble_sort(int v[], int size)
 {
-	int array[] = {5, 4, 3, 2, 1, 0, 9, 8, 7, 6};
-	int length = 10;
-	bubble_sort(array, length);
+	int	swap;
+	int	i;
+	int	j;
 
-	for(int i = 0; i < length; i++)
-		printf("%d\n", array[i]);
-}
+	swap = 1;
 
-void bubble_sort(int arr[], int size)
-{
-	for(int i=0; i < size; i++)
+	while(i < size - 1 && swap)
 	{
-		for(int j=0; j < (size - 1 - i); j++)
+		j = 0;
+		swap = 0;
+		while(j < size - 1 - i)
 		{
-			if(arr[j] < arr[j+1])
+			if(v[j] > v[j+1])
 			{
 				int	temp;
-				temp = arr[j + 1];
-				arr[j+1] = arr[j];
-				arr[j] = temp;
+
+				temp = v[j];
+				v[j] = v[j+1];
+				v[j+1] = temp;
+				swap = 1;
 			}
+			j++;
 		}
+		i++;
 	}
 }
+
+int main(int argc, char *argv[])
+{
+	int array[] = {90, 22, 76, 2, -77, -1, 1, 99, 33};
+
+	int size = sizeof(array) / sizeof(array[0]);
+	
+	 bubble_sort(array, size);
+	for(int i=0; i < size; i++)
+		printf("%i\n", array[i]);
+}
+
